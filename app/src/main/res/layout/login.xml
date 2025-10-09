@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="24dp"
+        android:background="#FFFFFF">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <!-- Title -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Welcome to"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="#000000"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TaskFlow"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="#1E90FF"
+                android:layout_marginBottom="8dp"/>
+
+            <!-- Subtitle -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Make your time count, tasks balanced, no burnout."
+                android:textSize="14sp"
+                android:textColor="#666666"
+                android:gravity="center"
+                android:layout_marginBottom="24dp"/>
+
+            <!-- Login Card Background -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:background="@drawable/login_gradient"
+                android:layout_marginBottom="16dp"
+                android:gravity="center">
+
+                <!-- Email / Phone -->
+                <EditText
+                    android:id="@+id/etEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:hint="Enter your email or phone"
+                    android:background="@drawable/input_bg"
+                    android:padding="12dp"
+                    android:inputType="textEmailAddress"
+                    android:textColor="#000000"
+                    android:textColorHint="#999999"
+                    android:layout_marginBottom="12dp"
+                    android:autofillHints="emailAddress"/>
+
+                <!-- Password -->
+                <EditText
+                    android:id="@+id/etPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:hint="Enter your password"
+                    android:background="@drawable/input_bg"
+                    android:padding="12dp"
+                    android:inputType="textPassword"
+                    android:textColor="#000000"
+                    android:textColorHint="#999999"
+                    android:layout_marginBottom="16dp"
+                    android:autofillHints="password"/>
+
+                <!-- Login Button -->
+                <Button
+                    android:id="@+id/btnLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:text="Log In"
+                    android:textColor="#000000"
+                    android:backgroundTint="#FFD700"
+                    android:layout_marginBottom="8dp"/>
+            </LinearLayout>
+
+            <!-- Sign up -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Don’t have an account?"
+                android:textSize="14sp"
+                android:textColor="#000000"
+                android:layout_marginBottom="8dp"/>
+
+            <Button
+                android:id="@+id/btnSignUp"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="Sign up"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#00C853"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- Divider -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="or"
+                android:textSize="14sp"
+                android:textColor="#000000"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- Social Buttons -->
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="Continue with Google"
+                android:textColor="#000000"
+                android:background="@drawable/outline_button"
+                android:layout_marginBottom="8dp"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="Continue with Facebook"
+                android:textColor="#000000"
+                android:background="@drawable/outline_button"
+                android:layout_marginBottom="8dp"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="Continue with Instagram"
+                android:textColor="#000000"
+                android:background="@drawable/outline_button"
+                android:layout_marginBottom="8dp"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
