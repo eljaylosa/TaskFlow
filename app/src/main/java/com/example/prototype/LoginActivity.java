@@ -32,11 +32,17 @@ public class LoginActivity extends AppCompatActivity {
             if (email.isEmpty() || password.isEmpty()) {
                 Toast.makeText(LoginActivity.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
             } else {
-                // Later replace this with Firebase or API check
-                Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
-
-                // Example: Go to Dashboard/Home (replace with real activity)
-                // startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                MyDatabaseHelper myDB = new MyDatabaseHelper(LoginActivity.this);
+                boolean valid = myDB.checkUser(email, password);
+                if (valid) {
+                    Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                    // Example: Go to Dashboard/Home (replace with your next activity)
+                    Intent intent = new Intent(LoginActivity.this, home.class);
+                    startActivity(intent);
+                    finish();
+                } else {
+                    Toast.makeText(LoginActivity.this, "Invalid email or password", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

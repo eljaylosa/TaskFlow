@@ -48,17 +48,41 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     }
     void insertUser(String name, String phone, String email, String password) {
         SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues cv = new ContentValues();
-        cv.put(FULL_NAME, name);
-        cv.put(PHONE_NO, phone);
-        cv.put(EMAIL, email);
-        cv.put(PASSWORD, password);
-        long result = db.insert(TABLE_NAME, null, cv);
-        if (result == -1) {
-            Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
+
+        // Check if email already exists
+        String checkQuery = "SELECT * FROM " + TABLE_NAME + " WHERE " + EMAIL + "=?";
+        android.database.Cursor cursor = db.rawQuery(checkQuery, new String[]{email});
+
+        if (cursor.getCount() > 0) {
+            // Email already exists — don’t insert
+            Toast.makeText(context, "Email already exists!", Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show();
+            // Insert new user
+            ContentValues cv = new ContentValues();
+            cv.put(FULL_NAME, name);
+            cv.put(PHONE_NO, phone);
+            cv.put(EMAIL, email);
+            cv.put(PASSWORD, password);
+
+            long result = db.insert(TABLE_NAME, null, cv);
+            if (result == -1) {
+                Toast.makeText(context, "Failed to register", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(context, "Registration successful!", Toast.LENGTH_SHORT).show();
+            }
         }
+
+        cursor.close();
+        db.close();
+    }
+    public boolean checkUser(String email, String password) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + EMAIL + "=? AND " + PASSWORD + "=?";
+        android.database.Cursor cursor = db.rawQuery(query, new String[]{email, password});
+        boolean exists = cursor.getCount() > 0;
+        cursor.close();
+        db.close();
+        return exists;
     }
 
 }

@@ -58,7 +58,7 @@
                     android:id="@+id/etEmail"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:hint="Enter your email or phone"
+                    android:hint="Enter your email"
                     android:background="@drawable/input_bg"
                     android:padding="12dp"
                     android:inputType="textEmailAddress"
