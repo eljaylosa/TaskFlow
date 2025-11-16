@@ -1,3 +1,43 @@
 <resources>
-    <string name="app_name">prototype</string>
+    <string name="app_name">Task Flow</string>
+
+    <!-- Profile Activity -->
+    <string name="profile_error_user_id_not_provided">Error: User ID not provided.</string>
+    <string name="profile_error_invalid_user_id_format">Error: Invalid User ID format.</string>
+    <string name="profile_error_layout_not_found">Layout Error: \"%1$s\" view not found in profile.xml.</string>
+    <string name="profile_error_could_not_load_user">Error: Could not load user profile.</string>
+    <string name="profile_label_unknown_user">Unknown User</string>
+    <string name="profile_label_no_hobbies">No hobbies added yet.</string>
+    <string name="profile_button_save">Save Profile</string>
+    <string name="profile_button_edit">Edit Profile</string>
+    <string name="profile_toast_edit_mode_enabled">You can now edit your profile.</string>
+    <string name="profile_error_cannot_save_not_loaded">Error: Cannot save profile. User data is not loaded.</string>
+    <string name="profile_error_name_empty">Name cannot be empty</string>
+    <string name="profile_toast_update_success">Profile updated successfully!</string>
+    <string name="profile_toast_update_failed">Failed to update profile.</string>
+    <string name="profile_toast_permission_failed">Failed to get permission for image.</string>
+    <string name="save">Save</string>
+    <string name="edit">Edit</string>
+    <string name="unknown_user">Unknown User</string>
+    <string name="no_hobbies_yet">No hobbies yet. Tap \"Edit\" to add one!</string>
+    <string name="select_hobby_to_see_progress">Select a hobby to see your progress.</string>
+    <string name="invalid_mood_entry">Invalid mood entry.</string>
+    <string name="invalid_date">Invalid date</string>
+    <string name="user_id_not_provided">User ID not provided. Please log in again.</string>
+    <string name="clear_mood_history_title">Clear Mood History</string>
+    <string name="clear_mood_history_message">Are you sure you want to delete all your mood history? This action cannot be undone.</string>
+    <string name="clear">Clear</string>
+    <string name="cancel">Cancel</string>
+    <string name="mood_history_cleared">Mood history cleared.</string>
+
+    <!-- Dashboard Activity -->
+    <string name="welcome_message">Hi, %1$s</string>
+    <string name="welcome_back">Hi, there</string>
+    <string name="hi_user">Hi User</string>
+    <plurals name="active_tasks_count">
+        <item quantity="one">You have %1$d active task</item>
+        <item quantity="other">You have %1$d active tasks</item>
+    </plurals>
+    <string name="mood">Mood</string>
+
 </resources>

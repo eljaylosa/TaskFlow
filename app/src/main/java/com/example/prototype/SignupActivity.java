@@ -10,48 +10,46 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class SignupActivity extends AppCompatActivity {
 
-    EditText etFullName, etPhone, etEmail, etPassword;
+    EditText etFullName, etEmail, etPassword, etPhone;
     Button btnCreateAccount, btnLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.sign_up); // <-- replace with your signup XML file name
+        setContentView(R.layout.sign_up);
 
-        // Initialize
         etFullName = findViewById(R.id.etFullName);
-        etPhone = findViewById(R.id.etPhone);
         etEmail = findViewById(R.id.etEmail);
         etPassword = findViewById(R.id.etPassword);
+        etPhone = findViewById(R.id.etPhone);
         btnCreateAccount = findViewById(R.id.btnCreateAccount);
         btnLogin = findViewById(R.id.btnLogin);
 
-        // Create Account Button
+        MyDatabaseHelper myDB = MyDatabaseHelper.getInstance(this);
+
         btnCreateAccount.setOnClickListener(v -> {
             String name = etFullName.getText().toString().trim();
-            String phone = etPhone.getText().toString().trim();
             String email = etEmail.getText().toString().trim();
             String password = etPassword.getText().toString().trim();
+            String phone = etPhone.getText().toString().trim();
 
-            if (name.isEmpty() || phone.isEmpty() || email.isEmpty() || password.isEmpty()) {
+            if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
                 Toast.makeText(SignupActivity.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
-            } else {
-                // Later connect this to Firebase or SQLite
-                MyDatabaseHelper myDB = new MyDatabaseHelper(SignupActivity.this);
-                myDB.insertUser(etFullName.getText().toString().trim(), etPhone.getText().toString().trim(), etEmail.getText().toString().trim(), etPassword.getText().toString().trim());
-                Toast.makeText(SignupActivity.this, "Account Created Successfully", Toast.LENGTH_SHORT).show();
+                return;
+            }
 
-                // Redirect to Login screen
-                Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
-                startActivity(intent);
+            boolean success = myDB.addUser(name, phone, email, password);
+            if (!success) {
+                Toast.makeText(SignupActivity.this, "Email already exists!", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(SignupActivity.this, "Account Created Successfully", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(SignupActivity.this, LoginActivity.class));
                 finish();
             }
         });
 
-        // Already have account? -> Go back to Login
         btnLogin.setOnClickListener(v -> {
-            Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
-            startActivity(intent);
+            startActivity(new Intent(SignupActivity.this, LoginActivity.class));
             finish();
         });
     }
